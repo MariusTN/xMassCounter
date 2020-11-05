@@ -4,70 +4,174 @@ $background-color: rgb(39, 32, 32);
 $weight-small: 300;
 $weight-regular: 400;
 $weight-bold: 700;
+$tshadow: 1px 1px 6px rgba($color: #000000, $alpha: 1);
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Rubik', sans-serif;
 }
 
-html{
+html {
     font-size: 10px;
     background: $background-color;
-    color: $white
+    color: $white;
+    overflow: hidden;
 }
 
 
-@media screen and (min-width: 300px){
-.hero{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+@media screen and (min-width: 300px) {
 
-    width: 100vw;
-    height: 100vh;
-
-    background-image: url(../images/annie-spratt.jpg);
-    background-size: cover;
-    background-position: center;
-
-    h1{
-        margin: 15rem auto 0 auto;
-        font-size: clamp(4rem, 7vw, 12rem);
-        text-align: center;
-        text-shadow: 1px 1px 6px rgba($color: #000000, $alpha: 1);
-    }
-
-    .container{
-        margin: 6rem auto;
-        width: 90vw;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        justify-items: center;
-
-        font-size: clamp(5rem, 7vw, 9rem);
-    }
-
-    .par{
+    .hero {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        text-shadow: 1px 1px 6px rgba($color: #000000, $alpha: 1);
-        font-weight: $weight-small;
-        flex: 1 1 40rem;
-        span{
-            
-            font-weight: $weight-bold;
-            text-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.8),  2px 4px 4px rgba($color: #000, $alpha: 0.6), 6px 6px 4px rgba($color: #000, $alpha: 0.4) ;
+        flex-direction: column;
+
+        width: 100vw;
+        height: 100vh;
+
+        background-image: url(../images/annie-spratt.jpg);
+        background-size: cover;
+        background-position: center;
+        z-index: 999;
+
+        .mega-container {
+            width: 90vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            h1 {
+                margin: 15rem auto 0 auto;
+                font-size: clamp(4rem, 7vw, 12rem);
+                text-align: center;
+                text-shadow: $tshadow;
+            }
+        }
+
+        .container {
+            margin: 6rem auto;
+            width: 90vw;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+
+            font-size: clamp(5rem, 7vw, 9rem);
+        }
+
+        .par {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-shadow: $tshadow;
+            font-weight: $weight-small;
+            flex: 1 1 40rem;
+
+            span {
+
+                font-weight: $weight-bold;
+                text-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.8), 2px 4px 4px rgba($color: #000, $alpha: 0.6), 6px 6px 4px rgba($color: #000, $alpha: 0.4);
+            }
+        }
+
+        .share {
+            margin: 0 auto;
+
+            h4 {
+                font-size: clamp(2rem, 4vw, 6rem);
+                text-shadow: $tshadow;
+            }
+
+            .wrap {
+                text-align: center;
+            }
+
         }
     }
-}
+
+
+
+    button {
+        background: $white;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+
+        padding: 1rem 2rem;
+        margin: 1rem;
+        border-radius: 3rem;
+    }
+
+    a {
+        color: white;
+    }
+
+    .twitter,
+    .facebook {
+        font-size: clamp(5rem, 5vw, 5em);
+        margin: 0 2rem;
+
+    }
+
+    //SNOW - Reference: https://codepen.io/alphardex/pen/dyPorwJ
+
+
+    @function random_range($min, $max) {
+        $rand: random();
+        $random_range: $min + floor($rand * (($max - $min) + 1));
+        @return $random_range;
+    }
+
+    .snow {
+        $total: 200;
+        position: absolute;
+        width: clamp(0.5rem, 0.7vw, 1rem); //my change for responsiveness
+        height: clamp(0.5rem, 0.7vw, 1rem); //my change for responsiveness
+        background: white;
+        border-radius: 50%;
+        z-index: 2;
+
+        @for $i from 1 through $total {
+            $random-x: random(1000000) * 0.0001vw;
+            $random-offset: random_range(-100000, 100000) * 0.0001vw;
+            $random-x-end: $random-x + $random-offset;
+            $random-x-end-yoyo: $random-x + ($random-offset / 2);
+            $random-yoyo-time: random_range(30000, 80000) / 100000;
+            $random-yoyo-y: $random-yoyo-time * 100vh;
+            $random-scale: random(10000) * 0.0001;
+            $fall-duration: random_range(10, 30) * 1s;
+            $fall-delay: random(30) * -1s;
+
+            &:nth-child(#{$i}) {
+                opacity: random(10000) * 0.0001;
+                transform: translate($random-x, -10px) scale($random-scale);
+                animation: fall-#{$i} $fall-duration $fall-delay linear infinite;
+            }
+
+            @keyframes fall-#{$i} {
+                #{percentage($random-yoyo-time)} {
+                    transform: translate($random-x-end, $random-yoyo-y) scale($random-scale);
+                }
+
+                to {
+                    transform: translate($random-x-end-yoyo, 100vh) scale($random-scale);
+                }
+            }
+        }
+    }
+
+
 }
 
-@media screen and (min-width: 800px){
-    .hero{.container {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+
+@media screen and (min-width: 800px) {
+    .hero {
+        .container {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
     }
-}
 }
