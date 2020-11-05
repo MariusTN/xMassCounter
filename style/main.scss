@@ -1,0 +1,51 @@
+$white: rgb(238, 232, 232);
+$background-color: rgb(39, 32, 32);
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+    background: $background-color;
+    color: $white
+}
+
+
+@media screen and (min-width: 300px){
+.hero{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url(../images/annie-spratt.jpg);
+    background-size: cover;
+    background-position: center;
+
+    h1{
+        margin: 15rem auto 0 auto;
+        font-size: clamp(4rem, 4vw, 9rem);
+    }
+
+    .container{
+        margin: 6rem auto;
+        width: 90vw;
+        display: flex;
+        justify-content: space-evenly;
+        font-size: clamp(3rem, 4vw, 6rem);
+    }
+
+    .par{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+}
