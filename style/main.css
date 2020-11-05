@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,700;1,400&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
 }
 
 html {
@@ -23,19 +25,35 @@ html {
   }
   .hero h1 {
     margin: 15rem auto 0 auto;
-    font-size: clamp(4rem, 4vw, 9rem);
+    font-size: clamp(4rem, 7vw, 12rem);
+    text-align: center;
+    text-shadow: 1px 1px 6px black;
   }
   .hero .container {
     margin: 6rem auto;
     width: 90vw;
-    display: flex;
-    justify-content: space-evenly;
-    font-size: clamp(3rem, 4vw, 6rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    font-size: clamp(5rem, 7vw, 9rem);
   }
   .hero .par {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-shadow: 1px 1px 6px black;
+    font-weight: 300;
+    flex: 1 1 40rem;
+  }
+  .hero .par span {
+    font-weight: 700;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8), 2px 4px 4px rgba(0, 0, 0, 0.6), 6px 6px 4px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .hero .container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 /*# sourceMappingURL=main.css.map */
