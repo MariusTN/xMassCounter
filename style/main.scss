@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,700;1,400&display=swap');
 $white: rgb(238, 232, 232);
 $background-color: rgb(39, 32, 32);
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,700;1,400&display=swap');
 $weight-small: 300;
 $weight-regular: 400;
 $weight-bold: 700;
@@ -17,29 +17,28 @@ html {
     font-size: 10px;
     background: $background-color;
     color: $white;
-    overflow: hidden;
+    
 }
 
 
-body{
+body {
     background-image: url(../images/annie-spratt.jpg);
     background-size: cover;
     background-position: center;
-    z-index: 1;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
 }
 
 @media screen and (min-width: 300px) {
 
     .hero {
-        position: relative;
         display: flex;
         align-items: center;
         flex-direction: column;
-
-        width: 100vw;
-        height: 100vh;
-        
-        z-index: 999;
+        overflow: hidden;
+        max-width: 100%;
+        max-height: 100%;
 
         .mega-container {
             width: 90vw;
@@ -47,23 +46,23 @@ body{
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-
+            z-index: 999;
             h1 {
-                margin: 15rem auto 0 auto;
-                font-size: clamp(4rem, 7vw, 12rem);
+                margin: 10rem auto 0 auto;
+                font-size: clamp(4rem, 8vw, 12rem);
                 text-align: center;
                 text-shadow: $tshadow;
             }
         }
 
         .container {
-            margin: 6rem auto;
+            margin: 3rem auto;
             width: 90vw;
             display: grid;
             grid-template-columns: 1fr 1fr;
             justify-items: center;
 
-            font-size: clamp(5rem, 7vw, 9rem);
+            font-size: clamp(4rem, 7vw, 9rem);
         }
 
         .par {
@@ -72,10 +71,9 @@ body{
             align-items: center;
             text-shadow: $tshadow;
             font-weight: $weight-small;
-            flex: 1 1 40rem;
+            font-size: clamp(4rem, 8vw, 7rem);
 
             span {
-
                 font-weight: $weight-bold;
                 text-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.8), 2px 4px 4px rgba($color: #000, $alpha: 0.6), 6px 6px 4px rgba($color: #000, $alpha: 0.4);
             }
@@ -115,67 +113,38 @@ body{
 
     .twitter,
     .facebook {
-        font-size: clamp(5rem, 5vw, 5em);
+        font-size: clamp(3rem, 5vw, 5rem);
         margin: 0 2rem;
 
     }
 
- 
+    .space{
+        margin: 0 1rem;
+    }
+
+
+
+    .music{
+        background: rgb(145, 170, 173);
+        height: 100%;
+        width: 100%;
+    }
+
+    button{
+        padding: 4rem;
+        border: 1px solid crimson;
+        background: none;
+    }
 
 }
 
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1000px) {
     .hero {
+        max-width: 90%;
         .container {
             grid-template-columns: 1fr 1fr 1fr 1fr;
         }
     }
 }
 
-   //SNOW - Reference: https://codepen.io/alphardex/pen/dyPorwJ
-
-
-   @function random_range($min, $max) {
-    $rand: random();
-    $random_range: $min + floor($rand * (($max - $min) + 1));
-    @return $random_range;
-}
-
-.snow {
-    $total: 200;
-    position: absolute;
-    width: clamp(0.7rem, 0.7vw, 1.4rem); //my change for responsiveness
-    height: clamp(0.7rem, 0.7vw, 1.4rem); //my change for responsiveness
-    background: white;
-    border-radius: 50%;
-    z-index: 2;
-
-    @for $i from 1 through $total {
-        $random-x: random(1000000) * 0.0001vw;
-        $random-offset: random_range(-100000, 100000) * 0.0001vw;
-        $random-x-end: $random-x + $random-offset;
-        $random-x-end-yoyo: $random-x + ($random-offset / 2);
-        $random-yoyo-time: random_range(30000, 80000) / 100000;
-        $random-yoyo-y: $random-yoyo-time * 100vh;
-        $random-scale: random(10000) * 0.0001;
-        $fall-duration: random_range(10, 30) * 1s;
-        $fall-delay: random(30) * -1s;
-
-        &:nth-child(#{$i}) {
-            opacity: random(10000) * 0.0001;
-            transform: translate($random-x, -10px) scale($random-scale);
-            animation: fall-#{$i} $fall-duration $fall-delay linear infinite;
-        }
-
-        @keyframes fall-#{$i} {
-            #{percentage($random-yoyo-time)} {
-                transform: translate($random-x-end, $random-yoyo-y) scale($random-scale);
-            }
-
-            to {
-                transform: translate($random-x-end-yoyo, 100vh) scale($random-scale);
-            }
-        }
-    }
-}
