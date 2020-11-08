@@ -48,6 +48,7 @@ body {
 @media screen and (min-width: 300px) {
 
     .hero {
+        transition: all 2s ease;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -70,6 +71,19 @@ body {
                 text-align: center;
                 text-shadow: $tshadow;
             }
+
+            .santa{
+                position: absolute;
+
+                transition: all 1s ease;
+
+                width: 150px;
+                height: auto;
+
+                bottom: 5%;
+                left: 5%;
+            }
+
         }
 
         .container {
@@ -157,7 +171,7 @@ body {
         .music-container {
             width: 80%;
             margin: 0 auto;
-            height: 20%;
+            height: 50%;
             background-color: rgba($color: $greenish, $alpha: 0.4);
 
             display: flex;
@@ -167,11 +181,11 @@ body {
             .player {
                 display: flex;
                 align-items: center;
-                flex-direction: row;
+                flex-direction: column;
 
                 .info {
                     display: flex;
-                    flex-direction: row;
+                    flex-direction: column;
 
                     .song-title {
                         font-size: $mobile-paragraph;
@@ -193,7 +207,7 @@ body {
                         flex: 1 1 20rem;
 
                         #iplay {
-                            font-size: $mobile-paragraph;
+                            font-size: clamp(2rem, 3vw, 3rem);
                             color: $white;
                         }
                     }
@@ -203,7 +217,7 @@ body {
 
                         #imute {
                             color: $white;
-                            font-size: $mobile-paragraph;
+                            font-size: clamp(2rem, 3vw, 3rem);
                         }
                     }
                 }
@@ -277,11 +291,20 @@ body {
     .hero {
         width: 80%;
         left: 10%;
-        transition: all 1s ease;
-
+        
+        
+        .mega-container{
+        .santa{
+            height: auto;
+            width: 35rem;
+            left: 10%;
+            bottom: 0%;
+        }
+    }
         .container {
             grid-template-columns: 1fr 1fr 1fr 1fr;
         }
+    
     }
 
 

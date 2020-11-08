@@ -43,12 +43,12 @@
                     <p class="par space red"><span class="seconds green"></span> Seconds</p>
                 </div>
             </div>
-            <span class="santa"></span>
+            <img class="santa" src="/images/santa.svg" alt="Santa and Reindeer"> </img>
             <div class="share">
                 <h2>Share with your friends</h2>
                 <div class="share-icons">
-                    <a href="#" aria-label="Twitter" class="twitter twitter-share"><i class="fab fa-twitter-square"></i></a>
-                    <a class="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.christmass.pulsemusification.com" rel="noreferrer" aria-label="Facebook" target="_blank">
+                    <a tabindex="1" href="#" aria-label="Twitter" class="twitter twitter-share"><i class="fab fa-twitter-square"></i></a>
+                    <a tabindex="2" class="facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.christmass.pulsemusification.com" rel="noreferrer" aria-label="Facebook" target="_blank">
                         <i class="fab fa-facebook-square"></i>
                     </a>
                 </div>
@@ -58,7 +58,7 @@
 
     <footer class="music">
 
-        <h2>Song Name</h2>
+        <h2 tabindex="3" aria-label="Santa's Radio">Dj Santa</h2>
 
         <div class="music-container">
             <audio autoplay preload="none" type="audio/mp3" src="https://sonic.magicdragon.nl/8056/stream">Your
@@ -69,8 +69,8 @@
                     <div class="artist-name">UPDATING...</div>
                 </div>
                 <div class="cbuttons">
-                    <button class="btn-play"><i id="iplay" class="fas fa-stop"></i></button>
-                    <button class="btn-mute"><i id="imute" class="fas fa-volume-up"></i></button>
+                    <button aria-label="Play Radio Button" class="btn-play"><i id="iplay" class="fas fa-stop"></i></button>
+                    <button aria-label="Stop Radio Button" class="btn-mute"><i id="imute" class="fas fa-volume-up"></i></button>
                 </div>
                 <label class="label-slider" for="slider"> Volume
                     <input id="slider" class="slider" type="range" min="0" max="1" step="0.01" value="0.20" />
