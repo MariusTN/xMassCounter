@@ -1,9 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,700;1,400&display=swap');
-$white: rgb(238, 232, 232);
-$background-color: rgb(39, 32, 32);
+$white: #f3f3f3;
+$red: #85152b;
+$green: #0b5550;
+$greenish: #3fc974;
+$redish: #e72e2e;
+$gray: #cac7c1;
+$background-color: #073431;
 $weight-small: 300;
 $weight-regular: 400;
 $weight-bold: 700;
+$mobile-paragraph: clamp(3rem, 4vw, 4rem);
+$mobile-large: clamp(6rem, 7vw, 8rem);
+$mobile-h2: clamp(2rem, 3vw, 3rem);
 $tshadow: 1px 1px 6px rgba($color: #000000, $alpha: 1);
 
 * {
@@ -15,19 +23,26 @@ $tshadow: 1px 1px 6px rgba($color: #000000, $alpha: 1);
 
 html {
     font-size: 10px;
-    background: $background-color;
+    background: $green;
     color: $white;
-    
+
 }
 
-
 body {
-    background-image: url(../images/annie-spratt.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
     width: 100%;
     height: 100vh;
+
+}
+
+.red {
+    color: $redish;
+    text-shadow: $tshadow;
+}
+
+.green {
+    color: $greenish;
+    text-shadow: $tshadow;
 }
 
 @media screen and (min-width: 300px) {
@@ -36,42 +51,48 @@ body {
         display: flex;
         align-items: center;
         flex-direction: column;
-        overflow: hidden;
-        max-width: 100%;
-        max-height: 100%;
+        width: 100%;
+        height: 100%;
+        margin: 0px auto;
 
         .mega-container {
-            width: 90vw;
-            height: 100vh;
+
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            z-index: 999;
-            h1 {
-                margin: 10rem auto 0 auto;
-                font-size: clamp(4rem, 8vw, 12rem);
+
+
+            .title {
+                margin: 0 auto;
+                font-size: clamp(5rem, 6vw, 8rem);
                 text-align: center;
                 text-shadow: $tshadow;
             }
         }
 
         .container {
-            margin: 3rem auto;
-            width: 90vw;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            justify-items: center;
 
-            font-size: clamp(4rem, 7vw, 9rem);
+
+            width: 100%;
+
+            display: grid;
+
+            gap: 1rem;
+
+            grid-template-columns: 1fr 1fr;
+
         }
 
         .par {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-top: 8rem;
             text-shadow: $tshadow;
             font-weight: $weight-small;
-            font-size: clamp(4rem, 8vw, 7rem);
+            font-size: $mobile-large;
 
             span {
                 font-weight: $weight-bold;
@@ -83,11 +104,11 @@ body {
             margin: 0 auto;
 
             h2 {
-                font-size: clamp(2rem, 4vw, 6rem);
+                font-size: $mobile-paragraph;
                 text-shadow: $tshadow;
             }
 
-            .wrap {
+            .share-icons {
                 text-align: center;
             }
 
@@ -101,8 +122,6 @@ body {
         font: inherit;
         cursor: pointer;
         outline: inherit;
-
-        padding: 1rem 2rem;
         margin: 1rem;
         border-radius: 3rem;
     }
@@ -113,38 +132,157 @@ body {
 
     .twitter,
     .facebook {
-        font-size: clamp(3rem, 5vw, 5rem);
+        font-size: clamp(4rem, 6vw, 6rem);
         margin: 0 2rem;
 
     }
 
-    .space{
-        margin: 0 1rem;
-    }
 
-
-
-    .music{
-        background: rgb(145, 170, 173);
-        height: 100%;
-        width: 100%;
-    }
-
-    button{
+    button {
         padding: 4rem;
-        border: 1px solid crimson;
+        border: 3px solid $red;
         background: none;
+    }
+
+    .music {
+        display: flex;
+        background: linear-gradient(#e66465, #9198e5);;
+        width: 100%;
+        height: 100vh;
+        font-size: $mobile-h2;
+        color: $white;
+        text-align: center;
+        flex-direction: column;
+
+        .music-container {
+            width: 80%;
+            margin: 0 auto;
+            height: 20%;
+            background-color: rgba($color: $greenish, $alpha: 0.4);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .player {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+
+                .info {
+                    display: flex;
+                    flex-direction: row;
+
+                    .song-title {
+                        font-size: $mobile-paragraph;
+                        font-weight: $weight-bold;
+                    }
+
+                    .artist-name {
+                        font-size: $mobile-paragraph;
+                        font-weight: $weight-bold;
+                    }
+                }
+
+                .cbuttons {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: row;
+
+                    .btn-play {
+                        flex: 1 1 20rem;
+
+                        #iplay {
+                            font-size: $mobile-paragraph;
+                            color: $white;
+                        }
+                    }
+
+                    .btn-mute {
+                        flex: 1 1 20rem;
+
+                        #imute {
+                            color: $white;
+                            font-size: $mobile-paragraph;
+                        }
+                    }
+                }
+
+                .label-slider {
+                    margin-top: 1rem;
+                    font-size: 1.5rem;
+
+                    input[type=range] {
+                        appearance: none;
+                        width: 100%;
+                        height: 5px;
+                        border-radius: 4px;
+                        background: $redish;
+                        outline: none;
+                        transition: opacity .6s;
+                        opacity: 0.7;
+
+                        &::-webkit-slider-thumb {
+                            appearance: none;
+                            width: 1.2rem;
+                            height: 2.4rem;
+                            border: 0;
+                            cursor: pointer;
+                            background: $greenish;
+                            border-radius: 1rem;
+                        }
+
+                        &::-moz-range-thumb {
+                            appearance: none;
+                            background: $greenish;
+                            width: 1.2rem;
+                            height: 2.4rem;
+                            border: 0;
+                            cursor: pointer;
+                            border-radius: 1rem;
+                        }
+
+                        &::-ms-thumb {
+                            appearance: none;
+                            width: 1.2rem;
+                            height: 2.4rem;
+                            border: 0;
+                            cursor: pointer;
+                            background: $greenish;
+                            border-radius: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .autoslides {
+        position: absolute;
+        top: 0;
+        z-index: -9999;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url(/images/toni-cuenca-CvFARq2qu8Y-unsplash.jpg);
+        width: 100%;
+        height: 100%;
     }
 
 }
 
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1200px) {
+
     .hero {
-        max-width: 90%;
+        width: 80%;
+        left: 10%;
+        transition: all 1s ease;
+
         .container {
             grid-template-columns: 1fr 1fr 1fr 1fr;
         }
     }
-}
 
+
+}
