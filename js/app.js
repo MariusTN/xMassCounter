@@ -53,6 +53,7 @@ window.onload = function(evt) {
         let iInsideMuteButton = document.querySelector("#imute");
         let audioVolume = document.querySelector("#slider");
 
+        audioElement.play();
         // adding function to Playbutton
         playButton.addEventListener('click', () => {
             if (audioElement.paused) {
